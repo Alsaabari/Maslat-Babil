@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 97%;
+    --foreground: 210 43% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 43% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 43% 12%;
+    --primary: 210 43% 15%;
+    --primary-foreground: 38 60% 90%;
+    --secondary: 38 30% 93%;
+    --secondary-foreground: 210 43% 15%;
+    --muted: 38 20% 94%;
+    --muted-foreground: 210 15% 42%;
+    --accent: 38 34% 53%;
+    --accent-foreground: 210 43% 12%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 38 15% 88%;
+    --input: 38 15% 85%;
+    --ring: 38 34% 53%;
+    --radius: 0.5rem;
+    --sidebar-background: 210 43% 15%;
+    --sidebar-foreground: 38 40% 88%;
+    --sidebar-primary: 38 34% 53%;
+    --sidebar-primary-foreground: 210 43% 12%;
+    --sidebar-accent: 210 40% 20%;
+    --sidebar-accent-foreground: 38 60% 90%;
+    --sidebar-border: 210 35% 22%;
+    --sidebar-ring: 38 34% 53%;
+
+    --navy: #162638;
+    --navy-light: #1e3448;
+    --gold: #af915f;
+    --gold-light: #fce1b6;
+    --paper: #faf8f5;
+    --success: #1e9e6a;
+    --warning: #c98a12;
+    --danger: #d64545;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "tnum" on;
+  }
+  input[type="date"],
+  input[type="datetime-local"] {
+    direction: ltr;
+    text-align: right;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: var(--gold);
+  }
+  .bg-navy {
+    background-color: var(--navy);
+  }
+  .bg-navy-light {
+    background-color: var(--navy-light);
+  }
+  .bg-gold {
+    background-color: var(--gold);
+  }
+  .border-gold {
+    border-color: var(--gold);
+  }
+  .num {
+    font-feature-settings: "tnum" on;
+    unicode-bidi: plaintext;
+  }
+}
+
+/* شريط تمرير رفيع */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9c0b2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ── أنماط الطباعة: السجل الموحد ── */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+}
