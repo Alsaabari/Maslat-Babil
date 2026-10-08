@@ -53,10 +53,18 @@ export default function Lawyers() {
           {q.data?.length === 0 && <p className="py-10 text-center text-muted-foreground">لا يوجد محامون مسجلون</p>}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {(q.data ?? []).map((l) => (
-              <button
+              <div
                 key={l.id}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    navigate(`/lawyers/${l.id}`);
+                  }
+                }}
                 onClick={() => navigate(`/lawyers/${l.id}`)}
-                className="group rounded-lg border border-border bg-card p-4 text-start transition-all hover:border-[#af915f] hover:shadow-sm"
+                className="group cursor-pointer rounded-lg border border-border bg-card p-4 text-start transition-all hover:border-[#af915f] hover:shadow-sm"
               >
                 <div className="flex items-start justify-between">
                   <div>
@@ -81,7 +89,7 @@ export default function Lawyers() {
                     </span>
                   )}
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </TabsContent>

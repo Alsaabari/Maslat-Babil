@@ -21,7 +21,7 @@ export default function CalendarPage() {
   const firstDay = (new Date(year, month, 1).getDay() + 1) % 7; // Sat=0
   const monthNames = ["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"];
 
-  const items = q.data ?? [];
+  const items = useMemo(() => q.data ?? [], [q.data]);
   const itemsByDay = useMemo(() => {
     const map = new Map<string, typeof items>();
     for (const it of items) {
