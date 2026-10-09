@@ -35,6 +35,19 @@ export default function Reports() {
         }
       />
 
+      {/* ترويسة الطباعة الرسمية مع الشعار */}
+      <div className="hidden print:flex items-center justify-between border-b border-border pb-4 mb-6">
+        <img src="/maslat-logo.png" alt="شعار مسلة بابل" className="h-14 object-contain" />
+        <div className="text-center">
+          <h1 className="text-xl font-bold">مسلة بابل — {REPORTS.find((r) => r.key === active)?.title}</h1>
+          <p className="text-xs text-muted-foreground">MASLATT BABIL LEGAL &amp; FINANCIAL ERP 2026</p>
+        </div>
+        <div className="text-xs text-end">
+          <div>تاريخ الطباعة: {fmtDate(new Date())}</div>
+          <div className="font-semibold">{REPORTS.find((r) => r.key === active)?.title}</div>
+        </div>
+      </div>
+
       <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 no-print">
         {REPORTS.map((r) => (
           <button

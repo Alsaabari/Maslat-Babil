@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Landmark, Lock, User } from "lucide-react";
+import { Lock, User } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function Login() {
@@ -34,13 +34,25 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-navy p-4">
       <div className="w-full max-w-sm">
-        <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl border border-[#af915f]/50 bg-[#af915f]/10">
-            <Landmark className="h-8 w-8 text-[#af915f]" />
+        <div className="mb-6 text-center">
+          <div className="mx-auto mb-3 flex h-24 w-24 items-center justify-center rounded-[24%] bg-white p-3 shadow-2xl border-2 border-[#af915f]/40">
+            <img
+              src="/maslat-app-icon.png"
+              alt="أيقونة مسلة بابل"
+              className="h-full w-full object-contain"
+            />
           </div>
-          <h1 className="text-2xl font-bold text-[#fce1b6]">مسلة بابل</h1>
-          <p className="mt-1 text-sm text-[#fce1b6]/60">
-            نظام الإدارة القانونية والمالية — 2026
+          <h1 className="text-2xl font-bold tracking-tight text-[#fce1b6] flex items-center justify-center gap-2">
+            <span>مسلة بابل</span>
+            <span className="text-xs font-bold text-[#facc15] bg-[#af915f]/25 px-2 py-0.5 rounded border border-[#af915f]/40">
+              2026
+            </span>
+          </h1>
+          <p className="mt-1 text-xs font-semibold tracking-widest text-[#fce1b6]/80 uppercase">
+            MASLATT BABIL ERP PROFESSIONAL
+          </p>
+          <p className="mt-0.5 text-[11px] text-[#fce1b6]/60">
+            نظام الإدارة القانونية والمالية الشامل
           </p>
         </div>
         <Card className="border-0 shadow-xl">

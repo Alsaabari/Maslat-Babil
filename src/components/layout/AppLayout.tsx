@@ -18,7 +18,6 @@ import {
   Settings as SettingsIcon,
   LogOut,
   Menu,
-  Landmark,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { ROLES } from "@contracts/types";
@@ -26,6 +25,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
 import { fmtDate } from "@/lib/format";
+
+import { PWAInstallButton } from "@/components/common/PWAInstallButton";
 
 const NAV = [
   { to: "/", label: "لوحة القيادة", icon: LayoutDashboard, module: "dashboard", end: true },
@@ -73,14 +74,23 @@ function NavItems({ onNavigate }: { onNavigate?: () => void }) {
 
 function Brand() {
   return (
-    <div className="flex items-center gap-3 px-5 py-5 border-b border-sidebar-border">
-      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[#af915f]/60 bg-[#af915f]/10">
-        <Landmark className="h-5 w-5 text-[#af915f]" />
+    <div className="flex items-center gap-3 px-4 py-4 border-b border-sidebar-border bg-sidebar/50">
+      <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-[22%] bg-white p-1.5 shadow-md border border-[#af915f]/40">
+        <img
+          src="/maslat-app-icon.png"
+          alt="أيقونة مسلة بابل"
+          className="h-full w-full object-contain"
+        />
       </div>
-      <div>
-        <div className="text-base font-bold text-[#fce1b6] leading-tight">مسلة بابل</div>
-        <div className="text-[10px] tracking-wide text-sidebar-foreground/60">
-          الإدارة القانونية والمالية 2026
+      <div className="min-w-0 flex-1">
+        <div className="text-base font-bold text-[#fce1b6] leading-tight flex items-center gap-1.5">
+          <span>مسلة بابل</span>
+          <span className="text-[10px] font-semibold text-[#facc15] bg-[#af915f]/25 px-1.5 py-0.5 rounded border border-[#af915f]/30">
+            2026
+          </span>
+        </div>
+        <div className="text-[10px] tracking-wider text-[#e2e8f0]/70 truncate uppercase font-medium">
+          MASLATT BABIL ERP
         </div>
       </div>
     </div>
@@ -99,8 +109,11 @@ export default function AppLayout() {
       <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar text-sidebar-foreground sticky top-0 h-screen overflow-y-auto">
         <Brand />
         <NavItems />
-        <div className="mt-auto border-t border-sidebar-border px-5 py-4 text-[11px] text-sidebar-foreground/50">
-          MASLAT BABIL ERP PROFESSIONAL
+        <div className="mt-auto p-3 border-t border-sidebar-border space-y-2">
+          <PWAInstallButton />
+          <div className="px-2 text-[10px] text-sidebar-foreground/50 text-center">
+            MASLATT BABIL ERP PROFESSIONAL
+          </div>
         </div>
       </aside>
 
@@ -113,18 +126,30 @@ export default function AppLayout() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72 bg-sidebar p-0 text-sidebar-foreground">
+            <SheetContent side="right" className="w-72 bg-sidebar p-0 text-sidebar-foreground flex flex-col h-full">
               <Brand />
-              <NavItems onNavigate={() => setOpen(false)} />
+              <div className="flex-1 overflow-y-auto">
+                <NavItems onNavigate={() => setOpen(false)} />
+              </div>
+              <div className="p-3 border-t border-sidebar-border mt-auto">
+                <PWAInstallButton />
+              </div>
             </SheetContent>
           </Sheet>
 
           <div className="lg:hidden flex items-center gap-2 font-bold text-primary">
-            <Landmark className="h-5 w-5 text-[#af915f]" />
-            مسلة بابل
+            <img
+              src="/maslat-app-icon.png"
+              alt="logo"
+              className="h-7 w-7 rounded-[22%] bg-white p-0.5 shadow-sm border border-slate-200 object-contain"
+            />
+            <span className="text-sm font-bold">مسلة بابل</span>
           </div>
 
           <div className="ms-auto flex items-center gap-3">
+            <div className="hidden sm:block">
+              <PWAInstallButton variant="compact" />
+            </div>
             <span className="hidden sm:block text-xs text-muted-foreground num">{fmtDate(new Date())}</span>
             <div className="h-6 w-px bg-border" />
             <div className="text-sm">

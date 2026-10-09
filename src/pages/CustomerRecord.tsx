@@ -74,9 +74,18 @@ export default function CustomerRecord() {
       </div>
 
       {/* ترويسة الطباعة */}
-      <div className="hidden print:block text-center mb-6">
-        <h1 className="text-xl font-bold">مسلة بابل — ملف السجل الموحد</h1>
-        <p className="text-sm mt-1">{c.fullName} — تاريخ الطباعة: {fmtDate(new Date())}</p>
+      <div className="hidden print:block mb-6 border-b border-border pb-4">
+        <div className="flex items-center justify-between">
+          <img src="/maslat-logo.png" alt="شعار مسلة بابل" className="h-14 object-contain" />
+          <div className="text-center">
+            <h1 className="text-xl font-bold">مسلة بابل — ملف السجل الموحد</h1>
+            <p className="text-xs text-muted-foreground">MASLATT BABIL LEGAL &amp; FINANCIAL ERP</p>
+          </div>
+          <div className="text-xs text-end">
+            <div>تاريخ الطباعة: {fmtDate(new Date())}</div>
+            <div className="font-semibold">{c.fullName}</div>
+          </div>
+        </div>
       </div>
 
       {/* الإجماليات المالية — بطاقات مستقلة */}
